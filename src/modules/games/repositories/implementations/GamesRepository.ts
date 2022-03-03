@@ -32,40 +32,6 @@ export class GamesRepository implements IGamesRepository {
     .innerJoin('user.games', 'game')
     .where('game.id = :id', { id })
     .getMany()
-
-
-
-
-    /*.createQueryBuilder()
-    .select('user')
-    .from(User, 'user')
-    .innerJoin(Game, 'game', 'user.games = game.users')
-    .where('game.id = :id', { id })
-    .getMany()*/
-    
-    
-    
-    /*.createQueryBuilder()
-    .select('user')
-    .from(User, 'user')
-    .innerJoin(Game, 'game', 'user.games = game.users')
-    .where('game.id = :id', { id })
-    .getMany()*/
-
-
-    
-    
-    //https://dd.engineering/blog/getting-started-with-typeorm
-    
-    //.innerJoin(Post, 'post', 'post.user_id = user.id')
-
-    /*.createQueryBuilder('game')
-    .innerJoinAndSelect('game.users', 'user')
-    .where('game.id = :id', { id })
-    .getMany()*/
-
-    
-
      
       // Complete usando query builder
   }
