@@ -14,17 +14,59 @@ export class GamesRepository implements IGamesRepository {
 
   async findByTitleContaining(param: string): Promise<Game[]> {
     return this.repository
-      .createQueryBuilder()
+      .createQueryBuilder("game")
+      .where("game.title ILIKE :title", {title: `%${param}%` })
+      .getMany();
       // Complete usando query builder
   }
 
   async countAllGames(): Promise<[{ count: string }]> {
-    return this.repository.query(); // Complete usando raw query
+    return this.repository.query('SELECT COUNT(*) FROM games'); // Complete usando raw query
   }
 
   async findUsersByGameId(id: string): Promise<User[]> {
     return this.repository
-      .createQueryBuilder()
+    .createQueryBuilder()
+    .select("user")
+    .from(User, "user")
+    .innerJoin('user.games', 'game')
+    .where('game.id = :id', { id })
+    .getMany()
+
+
+
+
+    /*.createQueryBuilder()
+    .select('user')
+    .from(User, 'user')
+    .innerJoin(Game, 'game', 'user.games = game.users')
+    .where('game.id = :id', { id })
+    .getMany()*/
+    
+    
+    
+    /*.createQueryBuilder()
+    .select('user')
+    .from(User, 'user')
+    .innerJoin(Game, 'game', 'user.games = game.users')
+    .where('game.id = :id', { id })
+    .getMany()*/
+
+
+    
+    
+    //https://dd.engineering/blog/getting-started-with-typeorm
+    
+    //.innerJoin(Post, 'post', 'post.user_id = user.id')
+
+    /*.createQueryBuilder('game')
+    .innerJoinAndSelect('game.users', 'user')
+    .where('game.id = :id', { id })
+    .getMany()*/
+
+    
+
+     
       // Complete usando query builder
   }
 }

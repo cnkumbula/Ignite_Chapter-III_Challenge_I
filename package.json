@@ -2,6 +2,7 @@
   "name": "desafio01",
   "version": "1.0.0",
   "main": "index.js",
+  "repository": "https://github.com/cnkumbula/Ignite_Chapter-III_Challenge_I.git",
   "license": "MIT",
   "scripts": {
     "lint:fix": "eslint --fix src --ext ts,tsx",
